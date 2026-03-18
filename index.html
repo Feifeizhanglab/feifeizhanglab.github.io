@@ -1,1 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feifei Zhang Lab</title>
+  <meta name="description" content="Feifei Zhang Lab — Engineering the tumor microenvironment for cancer immunotherapy." />
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #163b65;
+      --accent: #2f6fb3;
+      --line: #dbe3ee;
+      --shadow: 0 10px 30px rgba(22, 59, 101, 0.08);
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(22,59,101,0.96), rgba(47,111,179,0.90)),
+        url('https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: white;
+      padding-bottom: 72px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      opacity: 0.95;
+      font-weight: 600;
+    }
+
+    .hero {
+      padding: 72px 0 24px;
+      max-width: 760px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      line-height: 1.08;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      max-width: 700px;
+      margin: 0 0 28px;
+      opacity: 0.95;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 2px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255,255,255,0.7);
+      color: white;
+      background: transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    main {
+      margin-top: -36px;
+      padding-bottom: 60px;
+    }
+
+    .panel {
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(219, 227, 238, 0.8);
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin: 0 0 10px;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .highlight {
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .news-item,
+    .pub-item,
+    .person-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .news-item:last-child,
+    .pub-item:last-child,
+    .person-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .news-date {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .muted { color: var(--muted); }
+
+    .contact-list {
+      padding-left: 18px;
+      margin-bottom: 0;
+    }
+
+    footer {
+      background: #0f2744;
+      color: rgba(255,255,255,0.9);
+      padding: 28px 0;
+      font-size: 0.95rem;
+    }
+
+    footer a { color: white; }
+
+    @media (max-width: 900px) {
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">Feifei Zhang Lab</div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#people">People</a>
+          <a href="#publications">Publications</a>
+          <a href="#join">Join Us</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <h1>Engineering the tumor microenvironment for cancer immunotherapy</h1>
+        <p>
+          The Feifei Zhang Lab develops CRISPR, gene delivery, and spatial-omics approaches to reprogram immune ecosystems in cancer and to build next-generation immunotherapies.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#research">Explore Research</a>
+          <a class="btn btn-secondary" href="#join">Join the Lab</a>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section id="about" class="panel">
+        <h2 class="section-title">About the Lab</h2>
+        <p class="section-subtitle">We combine functional genomics, tumor immunology, and translational engineering.</p>
+        <p class="highlight">
+          Our lab studies how tumor cells and stromal and immune compartments shape the tumor microenvironment, and how these interactions can be rewired to improve cancer immunotherapy. We develop CRISPR-based screening platforms, gene delivery systems, and spatial single-cell approaches to identify actionable mechanisms and therapeutic opportunities.
+        </p>
+      </section>
+
+      <section id="research" class="panel">
+        <h2 class="section-title">Research Areas</h2>
+        <p class="section-subtitle">Three current directions that define the lab’s scientific focus.</p>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>CRISPR Functional Genomics</h3>
+            <p>
+              We use CRISPR perturbation systems to identify genes and pathways that regulate immune resistance, tumor plasticity, and therapeutic response.
+            </p>
+          </div>
+          <div class="card">
+            <h3>TME Reprogramming</h3>
+            <p>
+              We engineer strategies to convert immunosuppressive tumor microenvironments into immune-active states that support durable anti-tumor responses.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Spatial and Single-Cell Technologies</h3>
+            <p>
+              We integrate spatial transcriptomics and single-cell multi-omics to map cell-state transitions, immune niches, and therapy-induced remodeling.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="grid grid-2">
+          <div>
+            <h2 id="people" class="section-title">People</h2>
+            <p class="section-subtitle">We are building a collaborative, curious, and supportive research environment.</p>
+            <div class="person-item">
+              <strong>Feifei Zhang, PhD</strong><br />
+              <span class="muted">Principal Investigator</span>
+            </div>
+            <div class="person-item">
+              <strong>Open Positions</strong><br />
+              <span class="muted">Postdoctoral fellows, graduate students, and research assistants</span>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="section-title">News</h2>
+            <p class="section-subtitle">Add your latest updates here.</p>
+            <div class="news-item">
+              <div class="news-date">March 2026</div>
+              <div>Lab website launched.</div>
+            </div>
+            <div class="news-item">
+              <div class="news-date">Coming soon</div>
+              <div>Recruitment announcements, publications, and project updates.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="publications" class="panel">
+        <h2 class="section-title">Selected Publications</h2>
+        <p class="section-subtitle">Replace these placeholders with your own papers, preprints, and major collaborative work.</p>
+        <div class="pub-item">
+          <strong>Zhang F</strong>, et al. Title of your most relevant paper. <em>Journal Name</em>. Year.
+        </div>
+        <div class="pub-item">
+          <strong>Zhang F</strong>, et al. Title of your CRISPR or spatial-omics paper. <em>Journal Name</em>. Year.
+        </div>
+        <div class="pub-item">
+          <strong>Zhang F</strong>, et al. Title of your immunotherapy-related study. <em>Journal Name</em>. Year.
+        </div>
+      </section>
+
+      <section id="join" class="panel">
+        <h2 class="section-title">Join the Lab</h2>
+        <p class="section-subtitle">We welcome researchers interested in cancer immunology, functional genomics, and translational bioengineering.</p>
+        <div class="card">
+          <p>
+            We are looking for motivated trainees and fellows from diverse backgrounds. Ideal candidates are excited about interdisciplinary science at the interface of immunology, genomics, and therapeutic development.
+          </p>
+          <p>
+            To inquire about openings, please email your CV, a brief statement of research interests, and contact information for references.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" class="panel">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">Update these details with your institution and preferred contact information.</p>
+        <ul class="contact-list">
+          <li><strong>Email:</strong> your.email@institution.edu</li>
+          <li><strong>Institution:</strong> Your institution name</li>
+          <li><strong>Address:</strong> Department / Building / City / State</li>
+          <li><strong>GitHub:</strong> <a href="https://feifeizhanglab.github.io/">feifeizhanglab.github.io</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Feifei Zhang Lab. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
 
